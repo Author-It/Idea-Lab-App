@@ -1,5 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:idealab/components/InfoCard.dart';
+import 'package:idealab/models/riven-assets.dart';
+import 'package:idealab/utils/rive_utils.dart';
+import 'SideMenuTitle.dart';
 import 'package:rive/rive.dart';
 
 class SideMenu extends StatefulWidget {
@@ -20,47 +23,24 @@ class _SideMenuState extends State<SideMenu> {
       child: SafeArea(
           child: Column(
         children: [
-          const InfoCard(),
-          ListTile(
-            leading: SizedBox(
-              height: 34,
-              width: 34,
-              child: RiveAnimation.asset(
-                "assets/images/icons.riv",
-                artboard: "HOME",
-                onInit: (artboard) {},
-              ),
-            ),
-            title: const Text("Home", style: TextStyle(color: Colors.white)),
-          )
+          const InfoCard(name: "Akshat Jain", proff: "Student"),
+          ...sideMenus.map((menu) => SideMenuTitle(
+              menu: menu,
+              press: () {
+                menu.input.change(true);
+                Future.delayed(const Duration(seconds: 1), () {
+                  menu.input.change(false);
+                });
+              },
+              riveonInit: (artboard) {
+                StateMachineController controller = RiveUtils.getRiveController(
+                    artboard,
+                    stateMachineName: menu.stateMachineName);
+                menu.input = controller.findSMI("active") as SMIBool;
+              },
+              isActive: false)),
         ],
       )),
     ));
-  }
-}
-
-class InfoCard extends StatelessWidget {
-  const InfoCard({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const ListTile(
-      leading: CircleAvatar(
-        child: Icon(
-          CupertinoIcons.person,
-          color: Colors.white,
-        ),
-      ),
-      title: Text(
-        "NAME",
-        style: TextStyle(color: Colors.white),
-      ),
-      subtitle: Text(
-        "SOMETHING",
-        style: TextStyle(color: Colors.white),
-      ),
-    );
   }
 }
