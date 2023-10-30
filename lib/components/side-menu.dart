@@ -17,10 +17,12 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+
     return SafeArea(
         child: Container(
       width: 288,
-      height: double.infinity,
+      height: height,
       color: const Color(0xFF17203A),
       child: SafeArea(
           child: Column(

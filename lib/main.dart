@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
         // Also, 'useMaterial3' is not a valid ThemeData property.
       ),
-      home: const RootPage(),
+      home: const Material(child: RootPage()),
     );
   }
 }

@@ -6,6 +6,20 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: SideMenu(),);
+    return const SafeArea(
+      child: Stack(
+        children: [
+          Text("data"),
+          Positioned(
+            top: 0,
+            left: 0,
+            child: SizedBox(
+              width: 288,
+              child: SideMenu(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
