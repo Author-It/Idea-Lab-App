@@ -13,6 +13,8 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  RiveAssets selectedMenu = sideMenus.first;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,14 +24,19 @@ class _SideMenuState extends State<SideMenu> {
       color: const Color(0xFF17203A),
       child: SafeArea(
           child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const InfoCard(name: "Akshat Jain", proff: "Student"),
-          ...sideMenus.map((menu) => SideMenuTitle(
+          ...sideMenus.map(
+            (menu) => SideMenuTitle(
               menu: menu,
               press: () {
                 menu.input.change(true);
                 Future.delayed(const Duration(seconds: 1), () {
                   menu.input.change(false);
+                });
+                setState(() {
+                  selectedMenu = menu;
                 });
               },
               riveonInit: (artboard) {
@@ -38,7 +45,9 @@ class _SideMenuState extends State<SideMenu> {
                     stateMachineName: menu.stateMachineName);
                 menu.input = controller.findSMI("active") as SMIBool;
               },
-              isActive: false)),
+              isActive: selectedMenu == menu,
+            ),
+          ),
         ],
       )),
     ));
