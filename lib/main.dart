@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:idealab/components/side-menu.dart';
+import 'package:idealab/pages/root_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
         // Also, 'useMaterial3' is not a valid ThemeData property.
       ),
-      home: const Material(child: SideMenu()),
+      home: const RootPage(),
     );
   }
 }
