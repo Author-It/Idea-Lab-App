@@ -19,39 +19,38 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
 
-    return SafeArea(
-        child: Container(
+    return Container(
       width: 288,
       height: height,
-      color: const Color(0xFF17203A),
+      color: const Color(0xFF252738),
       child: SafeArea(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const InfoCard(name: "Akshat Jain", proff: "Student"),
-          ...sideMenus.map(
-            (menu) => SideMenuTitle(
-              menu: menu,
-              press: () {
-                menu.input.change(true);
-                Future.delayed(const Duration(seconds: 1), () {
-                  menu.input.change(false);
-                });
-                setState(() {
-                  selectedMenu = menu;
-                });
-              },
-              riveonInit: (artboard) {
-                StateMachineController controller = RiveUtils.getRiveController(
-                    artboard,
-                    stateMachineName: menu.stateMachineName);
-                menu.input = controller.findSMI("active") as SMIBool;
-              },
-              isActive: selectedMenu == menu,
-            ),
-          ),
-        ],
+      child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const InfoCard(name: "Akshat Jain", proff: "Student"),
+      ...sideMenus.map(
+        (menu) => SideMenuTitle(
+          menu: menu,
+          press: () {
+            menu.input.change(true);
+            Future.delayed(const Duration(seconds: 1), () {
+              menu.input.change(false);
+            });
+            setState(() {
+              selectedMenu = menu;
+            });
+          },
+          riveonInit: (artboard) {
+            StateMachineController controller = RiveUtils.getRiveController(
+                artboard,
+                stateMachineName: menu.stateMachineName);
+            menu.input = controller.findSMI("active") as SMIBool;
+          },
+          isActive: selectedMenu == menu,
+        ),
+      ),
+    ],
       )),
-    ));
+    );
   }
 }
