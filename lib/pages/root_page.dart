@@ -12,7 +12,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   late SMIBool isSideBarClosed;
-  bool isSideMenuClosed = true;
+  bool isSideMenuClosed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,9 @@ class _RootPageState extends State<RootPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Positioned(
+            AnimatedPositioned(
+              duration: Duration(milliseconds: 200),
+              curve: Curves.easeInOut,
               width: 288,
               height: MediaQuery.of(context).size.height,
               child: const SideMenu(),
@@ -37,6 +39,41 @@ class _RootPageState extends State<RootPage> {
                     child: const HomePage()),
               ),
             ),
+            Visibility(
+              visible: isSideMenuClosed,
+              child: Positioned(
+                  top: 10,
+                  left: 10,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isSideMenuClosed = !isSideMenuClosed;
+                      });
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      size: 30,
+                    ),
+                  )),
+            ),
+            Visibility(
+              visible: !isSideMenuClosed,
+              child: Positioned(
+                  top: 20,
+                  left: 260,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isSideMenuClosed = !isSideMenuClosed;
+                      });
+                    },
+                    child: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  )),
+            )
           ],
         ),
       ),
