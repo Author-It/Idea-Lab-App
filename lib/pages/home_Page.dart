@@ -11,9 +11,12 @@ class HomePage extends StatelessWidget {
           padding: EdgeInsets.only(top: 40, left: 40),
           child: Column(
             children: [
-              Text(
-                "This is Home Screen",
-                style: TextStyle(fontSize: 23),
+              Padding(
+                padding: EdgeInsets.only(top: 30),
+                child: Text(
+                  "This is Home Screen",
+                  style: TextStyle(fontSize: 23),
+                ),
               ),
             ],
           ),

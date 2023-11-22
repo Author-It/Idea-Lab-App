@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:idealab/components/side-menu.dart';
+import 'package:flutter/services.dart';
 import 'package:idealab/pages/root_page.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: Color(0xFF252738),
+    statusBarColor: Color(0xFF252738),
+  ));
   runApp(const MyApp());
 }
 

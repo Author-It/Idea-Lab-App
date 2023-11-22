@@ -52,6 +52,8 @@ class _RootPageState extends State<RootPage>
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: const Color(0xFF252738),
       resizeToAvoidBottomInset: false,
@@ -109,7 +111,19 @@ class _RootPageState extends State<RootPage>
                   isSideBarClosed.value = true;
                 },
               ),
-            )
+            ),
+            Positioned(
+              top: 15,
+              right: 15,
+              child: Container(
+                width: 45,
+                height: 45,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(200),
+                    color: Colors.blue.shade50),
+                child: const Center(child: Text("A")),
+              ),
+            ),
           ],
         ),
       ),
