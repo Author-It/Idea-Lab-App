@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'LNCT AICTE Idea Lab',
+      debugShowCheckedModeBanner: false, // Removed the debug banner
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
         // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
