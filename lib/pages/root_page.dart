@@ -76,9 +76,25 @@ class _RootPageState extends State<RootPage>
                 offset: Offset(animation.value * 265, 0),
                 child: Transform.scale(
                   scale: scaleAnimation.value,
-                  child: const ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(24)),
-                    child: HomePage(),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(24)),
+                    child: GestureDetector(
+                      onTap: () {
+                        if (!isSideMenuClosed) {
+                          isSideBarClosed.value = !isSideBarClosed.value;
+
+                          if (isSideMenuClosed) {
+                            _animationController.forward();
+                          } else {
+                            _animationController.reverse();
+                          }
+                          setState(() {
+                            isSideMenuClosed = isSideBarClosed.value;
+                          });
+                        }
+                      },
+                      child: const HomePage(),
+                    ),
                   ),
                 ),
               ),

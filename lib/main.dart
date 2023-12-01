@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:idealab/pages/root_page.dart';
+import 'package:idealab/pages/splashScreen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
         // Also, 'useMaterial3' is not a valid ThemeData property.
       ),
-      home: const Material(child: RootPage()),
+      home: const Material(child: SplashScreen()),
     );
   }
 }
