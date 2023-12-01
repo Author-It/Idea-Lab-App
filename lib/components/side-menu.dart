@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:idealab/components/InfoCard.dart';
 import 'package:idealab/models/riven-assets.dart';
+import 'package:idealab/pages/events_page.dart';
+import 'package:idealab/pages/home_Page.dart';
 import 'package:idealab/utils/rive_utils.dart';
 import 'SideMenuTitle.dart';
 import 'package:rive/rive.dart';
@@ -24,32 +26,40 @@ class _SideMenuState extends State<SideMenu> {
       height: height,
       color: const Color(0xFF252738),
       child: SafeArea(
-      child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const InfoCard(name: "Akshat Jain", proff: "Student"),
-      ...sideMenus.map(
-        (menu) => SideMenuTitle(
-          menu: menu,
-          press: () {
-            menu.input.change(true);
-            Future.delayed(const Duration(seconds: 1), () {
-              menu.input.change(false);
-            });
-            setState(() {
-              selectedMenu = menu;
-            });
-          },
-          riveonInit: (artboard) {
-            StateMachineController controller = RiveUtils.getRiveController(
-                artboard,
-                stateMachineName: menu.stateMachineName);
-            menu.input = controller.findSMI("active") as SMIBool;
-          },
-          isActive: selectedMenu == menu,
-        ),
-      ),
-    ],
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const InfoCard(name: "Akshat Jain", proff: "Student"),
+          ...sideMenus.map(
+            (menu) => SideMenuTitle(
+              menu: menu,
+              press: () {
+                menu.input.change(true);
+                Future.delayed(const Duration(seconds: 1), () {
+                  menu.input.change(false);
+                });
+                setState(() {
+                  selectedMenu = menu;
+                });
+
+                if (menu.title == "Home") {
+                  Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const EventPage();
+                    },
+                  ));
+                }
+              },
+              riveonInit: (artboard) {
+                StateMachineController controller = RiveUtils.getRiveController(
+                    artboard,
+                    stateMachineName: menu.stateMachineName);
+                menu.input = controller.findSMI("active") as SMIBool;
+              },
+              isActive: selectedMenu == menu,
+            ),
+          ),
+        ],
       )),
     );
   }
