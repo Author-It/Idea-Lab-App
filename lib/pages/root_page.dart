@@ -3,12 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:idealab/components/side-menu.dart';
 import 'package:idealab/models/MenuBtn.dart';
-import 'package:idealab/pages/home_Page.dart';
 import 'package:idealab/utils/rive_utils.dart';
 import 'package:rive/rive.dart';
 
 class RootPage extends StatefulWidget {
-  const RootPage({super.key});
+  final Widget page;
+
+  const RootPage({required this.page, super.key});
 
   @override
   State<RootPage> createState() => _RootPageState();
@@ -65,7 +66,7 @@ class _RootPageState extends State<RootPage>
               left: isSideMenuClosed ? -288 : 0,
               width: 288,
               height: MediaQuery.of(context).size.height,
-              child: const SideMenu(),
+              child: SideMenu(),
             ),
             Transform(
               alignment: Alignment.center,
@@ -93,7 +94,7 @@ class _RootPageState extends State<RootPage>
                           });
                         }
                       },
-                      child: const HomePage(),
+                      child: widget.page,
                     ),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:idealab/pages/home_Page.dart';
 import 'package:idealab/pages/root_page.dart';
 import 'package:idealab/utils/functions.dart';
 
@@ -16,7 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const RootPage(),
+        builder: (context) => const RootPage(
+          page: HomePage(),
+        ),
       ),
     );
   }

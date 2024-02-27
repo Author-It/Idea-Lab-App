@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:idealab/pages/splashScreen.dart';
+import 'package:provider/provider.dart';
+import 'providers/SelectMenuProvider.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -15,16 +17,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LNCT AICTE Idea Lab',
-      debugShowCheckedModeBanner: false, // Removed the debug banner
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)
-            .copyWith(background: Colors.white),
-        // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
-        // Also, 'useMaterial3' is not a valid ThemeData property.
+    return ChangeNotifierProvider(
+      create: (_) => SelectedMenuProvider(),
+      child: MaterialApp(
+        title: 'LNCT AICTE Idea Lab',
+        debugShowCheckedModeBanner: false, // Removed the debug banner
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)
+              .copyWith(background: Colors.white),
+          // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
+          // Also, 'useMaterial3' is not a valid ThemeData property.
+        ),
+        home: const Material(child: SplashScreen()),
       ),
-      home: const Material(child: SplashScreen()),
     );
   }
 }
