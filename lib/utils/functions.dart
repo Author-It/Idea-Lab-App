@@ -12,6 +12,13 @@ Future<void> getRandQuote() async {
   var data = json.decode(response.body);
 
   // Get the quote and author
-  quote = data[0]["q"];
-  author = data[0]["a"];
+
+  if (data[0]["a"] == "zenquotes.io") {
+    quote = "The only true wisdom is in knowing you know nothing.";
+    author = "Socrates";
+    return;
+  } else {
+    quote = data[0]["q"];
+    author = data[0]["a"];
+  }
 }

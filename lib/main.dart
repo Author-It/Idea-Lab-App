@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       title: 'LNCT AICTE Idea Lab',
       debugShowCheckedModeBanner: false, // Removed the debug banner
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple)
+            .copyWith(background: Colors.white),
         // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
         // Also, 'useMaterial3' is not a valid ThemeData property.
       ),

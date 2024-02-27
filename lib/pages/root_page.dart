@@ -132,9 +132,7 @@ class _RootPageState extends State<RootPage>
               top: isSideMenuClosed ? 15 : -100,
               right: 20,
               child: GestureDetector(
-                onTap: () {
-                  print("CHAL GYA BCCCC");
-                },
+                onTap: () {},
                 child: Container(
                   width: 45,
                   height: 45,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:idealab/components/InfoCard.dart';
 import 'package:idealab/models/riven-assets.dart';
 import 'package:idealab/pages/events_page.dart';
-import 'package:idealab/pages/home_Page.dart';
 import 'package:idealab/utils/rive_utils.dart';
 import 'SideMenuTitle.dart';
 import 'package:rive/rive.dart';
@@ -43,7 +42,7 @@ class _SideMenuState extends State<SideMenu> {
                 });
 
                 if (menu.title == "Home") {
-                  Navigator.pushReplacement(context, MaterialPageRoute(
+                  Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
                       return const EventPage();
                     },

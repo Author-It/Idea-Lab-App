@@ -28,5 +28,11 @@ List<RiveAssets> sideMenus = [
       title: "Favorites",
       artboard: "LIKE/STAR"),
   RiveAssets("assets/images/icons.riv",
-      stateMachineName: "CHAT_Interactivity", title: "Help", artboard: "CHAT"),
+      stateMachineName: "CHAT_Interactivity",
+      title: "Notifications",
+      artboard: "CHAT"),
+  RiveAssets("assets/images/icons.riv",
+      stateMachineName: "STATE MACHINE 1",
+      title: "Profile",
+      artboard: "PROFILE"),
 ];

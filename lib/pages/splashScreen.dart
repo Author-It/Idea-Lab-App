@@ -24,6 +24,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     start();
-    return const Placeholder();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Center(
+          child: Image.asset(
+            'assets/images/splash.png',
+            height: 340,
+            width: 356,
+          ),
+        ),
+      ],
+    );
   }
 }
