@@ -13,7 +13,7 @@ Future<void> getRandQuote() async {
 
   // Get the quote and author
 
-  if (data[0]["a"] == "zenquotes.io") {
+  if (data[0]["a"] == "zenquotes.io" || data[0].isEmpty) {
     quote = "The only true wisdom is in knowing you know nothing.";
     author = "Socrates";
     return;

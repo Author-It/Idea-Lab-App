@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:idealab/pages/splashScreen.dart';
@@ -28,7 +29,10 @@ class MyApp extends StatelessWidget {
           // Used 'fromSwatch' and 'primarySwatch' for the color scheme.
           // Also, 'useMaterial3' is not a valid ThemeData property.
         ),
-        home: const Material(child: SplashScreen()),
+        home: const Material(
+            child: SplashScreen(
+          key: Key('splashScreen'),
+        )),
       ),
     );
   }

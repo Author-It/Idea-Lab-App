@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:idealab/components/side-menu.dart';
 import 'package:idealab/models/MenuBtn.dart';
+import 'package:idealab/pages/profile_page.dart';
 import 'package:idealab/utils/rive_utils.dart';
 import 'package:rive/rive.dart';
 
@@ -66,7 +67,7 @@ class _RootPageState extends State<RootPage>
               left: isSideMenuClosed ? -288 : 0,
               width: 288,
               height: MediaQuery.of(context).size.height,
-              child: SideMenu(),
+              child: const SideMenu(),
             ),
             Transform(
               alignment: Alignment.center,
@@ -134,13 +135,21 @@ class _RootPageState extends State<RootPage>
               right: 20,
               child: GestureDetector(
                 onTap: () {},
-                child: Container(
-                  width: 45,
-                  height: 45,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(200),
-                      color: Colors.blue.shade50),
-                  child: const Center(child: Text("A")),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const ProfilePage();
+                    }));
+                  },
+                  child: Container(
+                    width: 45,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(200),
+                        color: Colors.blue.shade50),
+                    child: const Center(child: Text("A")),
+                  ),
                 ),
               ),
             ),
