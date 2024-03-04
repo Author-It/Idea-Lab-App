@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:idealab/components/ProfilePageButton.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -30,17 +30,15 @@ class _ProfilePageState extends State<ProfilePage> {
                 //     ),
                 //   ),
                 // ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 190),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.7,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Color(0xffffffff),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
+                Container(
+                  margin: const EdgeInsets.only(top: 117),
+                  height: MediaQuery.of(context).size.height - 150,
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Color(0xffffffff),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
                     ),
                   ),
                 ),
@@ -48,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     const Center(
                       child: Padding(
-                        padding: EdgeInsets.only(top: 100),
+                        padding: EdgeInsets.only(top: 60),
                         child: CircleAvatar(
                           radius: 80,
                           backgroundImage:
@@ -73,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ],
                                     color: Colors.transparent,
                                     decoration: TextDecoration.underline,
-                                    decorationColor: Colors.blue,
+                                    decorationColor: Color(0xff252738),
                                     decorationThickness: 1.5,
                                   ),
                                 ),
@@ -126,6 +124,54 @@ class _ProfilePageState extends State<ProfilePage> {
                       thickness: 1,
                       indent: 20,
                       endIndent: 20,
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(top: 20, left: 30),
+                        child: Row(
+                          children: [
+                            Text.rich(
+                              TextSpan(
+                                text: 'Qu',
+                                style: GoogleFonts.lato(
+                                  textStyle: const TextStyle(
+                                    fontSize: 30,
+                                    shadows: [
+                                      Shadow(
+                                          color: Colors.black,
+                                          offset: Offset(0, -5))
+                                    ],
+                                    color: Colors.transparent,
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: Color(0xff252738),
+                                    decorationThickness: 1.5,
+                                  ),
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                      text: 'ick Actions',
+                                      style: GoogleFonts.lato(
+                                        textStyle: const TextStyle(
+                                          fontSize: 30,
+                                          shadows: [
+                                            Shadow(
+                                                color: Colors.black,
+                                                offset: Offset(0, -5))
+                                          ],
+                                          color: Colors.transparent,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )),
+                    const SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          ProfileBtn(icon: CupertinoIcons.calendar, text: "elo")
+                        ],
+                      ),
                     )
                   ],
                 ),
