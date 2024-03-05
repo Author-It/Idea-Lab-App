@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:idealab/utils/functions.dart';
 
 class HomePage extends StatefulWidget {
@@ -57,96 +61,128 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              const Row(
+              Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 30, top: 30, bottom: 12),
-                    child: Text(
-                      'Highlights',
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontFamily: "Lato",
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    padding:
+                        const EdgeInsets.only(left: 30, top: 30, bottom: 12),
+                    child: Text('Highlights',
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
                   ),
                 ],
               ),
               Image.asset("assets/images/grad.png"),
-              const Row(
+              Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 30, top: 20, bottom: 12),
+                    padding:
+                        const EdgeInsets.only(left: 30, top: 20, bottom: 12),
                     child: Text(
                       'Events',
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontFamily: "Lato",
-                        fontWeight: FontWeight.bold,
+                      style: GoogleFonts.lato(
+                        textStyle: const TextStyle(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               Image.asset("assets/images/grad.png"),
-              const Row(
+              Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 30, top: 20, bottom: 12),
-                    child: Text(
-                      'About Idea Lab',
-                      style: TextStyle(
-                        fontSize: 36,
-                        fontFamily: "Lato",
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    padding:
+                        const EdgeInsets.only(left: 30, top: 20, bottom: 12),
+                    child: Text('About Idea Lab',
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
                   ),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Projects',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 160,
+                      // ignore this, cos I am giving height to the container
+                      width: 160,
+                      // ignore this, cos I am giving width to the container
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/images/tile.png'))),
+                      alignment: Alignment.bottomCenter,
+                      // This aligns the child of the container
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        height: 30,
+                        width: 160,
+                        decoration: const BoxDecoration(
+                          color: Color(0xff6F91F5),
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8)),
+                        ),
+                        child: Center(
+                          child: Text('Projects',
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              )),
                         ),
                       ),
                     ),
                   ),
-                  Container(
-                    width: 150,
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Colors.orange,
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 2.0,
-                      ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Resources',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 160,
+                      // ignore this, cos I am giving height to the container
+                      width: 160,
+                      // ignore this, cos I am giving width to the container
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/images/tile.png'))),
+                      alignment: Alignment.bottomCenter,
+                      // This aligns the child of the container
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        height: 30,
+                        width: 160,
+                        decoration: const BoxDecoration(
+                          color: Color(0xff6F91F5),
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(8),
+                              bottomRight: Radius.circular(8)),
+                        ),
+                        child: Center(
+                          child: Text('Resources',
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18),
+                              )),
                         ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
               const Padding(padding: EdgeInsets.only(bottom: 20)),

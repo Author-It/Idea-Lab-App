@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -5,20 +6,39 @@ String quote = '';
 String author = '';
 
 Future<void> getRandQuote() async {
-  // Get the data from the API
-  var response = await http.get(Uri.parse('https://zenquotes.io/api/random'));
+  try {
+    // Set a timeout duration (in milliseconds)
+    const timeoutDuration = Duration(seconds: 20000);
 
-  // Convert the data to JSON
-  var data = json.decode(response.body);
+    // Create a new HTTP client
+    var client = http.Client();
 
-  // Get the quote and author
+    // Send the HTTP request with a timeout
+    var response = await client
+        .get(
+          Uri.parse('https://zenquotes.io/api/random'),
+        )
+        .timeout(timeoutDuration);
 
-  if (data[0]["a"] == "zenquotes.io" || data[0].isEmpty) {
+    // Close the client
+    client.close();
+
+    // Convert the data to JSON
+    var data = json.decode(response.body);
+
+    // Get the quote and author
+    if (data[0]["a"] == "zenquotes.io" || data[0].isEmpty) {
+      quote = "The only true wisdom is in knowing you know nothing.";
+      author = "Socrates";
+    } else {
+      quote = data[0]["q"];
+      author = data[0]["a"];
+    }
+  } catch (e) {
+    // Handle timeout or other errors
+    print('Error occurred: $e');
+    // You can set default values here if needed
     quote = "The only true wisdom is in knowing you know nothing.";
     author = "Socrates";
-    return;
-  } else {
-    quote = data[0]["q"];
-    author = data[0]["a"];
   }
 }

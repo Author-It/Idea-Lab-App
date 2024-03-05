@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () {
                           Share.share(
                               "Download our app!!!\n\nhttps://play.google.com/store/apps/details?id=com.lnct.bhopal.ac.in.idealab",
-                              subject: "Look what I made!");
+                              subject: "LNCT IDEA Lab App");
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

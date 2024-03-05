@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:idealab/pages/home_Page.dart';
 import 'package:idealab/pages/profile_page.dart';
 import 'package:idealab/pages/splashScreen.dart';
 import 'package:provider/provider.dart';
@@ -32,9 +33,9 @@ class MyApp extends StatelessWidget {
         ),
         home: const Material(
             child: SplashScreen(
-              key: Key('splashScreen'),
-            )),
-        // home: const ProfilePage(),
+          key: Key('splashScreen'),
+        )),
+        // home: const HomePage(),
       ),
     );
   }

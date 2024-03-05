@@ -22,17 +22,19 @@ class _SplashScreenState extends State<SplashScreen> {
     // Receive context here
     await getRandQuote();
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const RootPage(
-          page: HomePage(),
+    await Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const RootPage(
+            page: HomePage(),
+          ),
         ),
-      ),
-      // MaterialPageRoute(
-      //   builder: (context) => const ProfilePage(),
-      // ),
-    );
+        // MaterialPageRoute(
+        //   builder: (context) => const ProfilePage(),
+        // ),
+      );
+    });
   }
 
   @override
