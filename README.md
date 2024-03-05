@@ -1,4 +1,4 @@
-# idealab
+# IDEA Lab App
 
 A new Flutter project.
 
