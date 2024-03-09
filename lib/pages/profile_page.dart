@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:idealab/components/ProfilePageButton.dart';
 import 'package:idealab/pages/about_us_page.dart';
+import 'package:idealab/pages/login_page.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -101,7 +102,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 12),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: const Color(0xff252738),
                           side: const BorderSide(color: Colors.black, width: 2),
@@ -234,6 +238,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           ProfileBtn(
                             icon: FontAwesomeIcons.listCheck,
                             text: "Projects",
+                            nextPage: ProfilePage(),
+                          ),
+                          ProfileBtn(
+                            icon: FontAwesomeIcons.briefcase,
+                            text: "Work at IDEA Lab",
                             nextPage: ProfilePage(),
                           ),
                         ],

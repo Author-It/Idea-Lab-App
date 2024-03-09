@@ -42,3 +42,36 @@ Future<void> getRandQuote() async {
     author = "Socrates";
   }
 }
+
+Future<dynamic> fetchAPI(String ep) async {
+  try {
+    // Set a timeout duration (in milliseconds)
+    const timeoutDuration = Duration(seconds: 20);
+
+    // Create a new HTTP client
+    var client = http.Client();
+
+    // Send the HTTP request with a timeout
+    var response = await client
+        .get(
+          Uri.parse('https://idealabapi.herokuapp.com/$ep'),
+        )
+        .timeout(timeoutDuration);
+
+    // Close the client
+    client.close();
+
+    // Convert the data to JSON
+    var data = json.decode(response.body);
+
+    return data;
+  } catch (e) {
+    // Handle timeout or other errors
+    if (e is TimeoutException) {
+      return {'error': 'Timeout occurred'};
+    } else {
+      print('Error occurred: $e');
+      return {'error': '$e'};
+    }
+  }
+}

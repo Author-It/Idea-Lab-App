@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:idealab/components/EventCard.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({super.key});
@@ -183,6 +185,37 @@ class _EventPageState extends State<EventPage> {
                 ],
               ),
             ),
+            Visibility(
+              visible: b1,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Text("Upcoming Events"),
+              ),
+            ),
+            Visibility(
+              visible: b2,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Text("Ongoing Events"),
+              ),
+            ),
+            Visibility(
+              visible: b3,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Text("Past Events"),
+              ),
+            ),
+            const EventCard()
           ],
         ),
       ),
