@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -11,7 +12,45 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  GlobalKey<FormState> _form = GlobalKey<FormState>();
+
+  void _validate() {
+    _form.currentState?.validate();
+  }
+
+  void wrongID() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          backgroundColor: const Color(0xff252738),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "INVALID CREDENTIALS",
+                style: GoogleFonts.crimsonPro(
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   bool showPass = false;
+
+  final idController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +64,8 @@ class _LoginPageState extends State<LoginPage> {
               const Center(
                 child: Image(
                   image: AssetImage("assets/images/login_cover.png"),
-                  height: 320,
-                  width: 320,
+                  height: 280,
+                  width: 280,
                 ),
               ),
               Text(
@@ -59,7 +98,8 @@ class _LoginPageState extends State<LoginPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Form(
-                    // key: _formkey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    key: _form,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -72,25 +112,50 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             child: TextFormField(
+                              controller: idController,
                               validator: MultiValidator([
                                 RequiredValidator(
                                   errorText: 'Please enter your ID',
                                 ),
+                                PatternValidator(
+                                  r'^[0-9]+$',
+                                  errorText: "Can only have numbers.",
+                                )
                               ]).call,
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                 hintText: 'Student ID',
                                 labelText: 'Student ID',
-                                prefixIcon: Icon(
+                                labelStyle: GoogleFonts.crimsonPro(
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xff676A6C),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                hintStyle: GoogleFonts.crimsonPro(
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xff676A6C),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                prefixIcon: const Icon(
                                   FontAwesomeIcons.graduationCap,
                                 ),
-                                errorStyle: TextStyle(fontSize: 18.0),
-                                enabledBorder: OutlineInputBorder(
+                                errorStyle: const TextStyle(fontSize: 18.0),
+                                border: const OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(9.0),
                                   ),
                                 ),
-                                focusedBorder: OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.grey),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(9.0),
+                                  ),
+                                ),
+                                focusedBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey),
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(9.0),
@@ -116,14 +181,29 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             child: TextFormField(
                               obscureText: !showPass,
+                              controller: passwordController,
                               validator: MultiValidator([
                                 RequiredValidator(
                                   errorText: 'Please enter Password',
                                 ),
                               ]).call,
                               decoration: InputDecoration(
-                                hintText: 'Student ID',
+                                hintText: 'Password',
                                 labelText: 'Password',
+                                labelStyle: GoogleFonts.crimsonPro(
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xff676A6C),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                hintStyle: GoogleFonts.crimsonPro(
+                                  textStyle: const TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xff676A6C),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                                 prefixIcon: const Icon(
                                   FontAwesomeIcons.lock,
                                 ),
@@ -138,6 +218,12 @@ class _LoginPageState extends State<LoginPage> {
                                       : const Icon(Icons.visibility_off),
                                 ),
                                 errorStyle: const TextStyle(fontSize: 18.0),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.grey),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(9.0),
+                                  ),
+                                ),
                                 enabledBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.grey),
                                   borderRadius: BorderRadius.all(
@@ -164,17 +250,33 @@ class _LoginPageState extends State<LoginPage> {
                               top: 30,
                             ),
                             child: ElevatedButton(
-                              onPressed: () {
-                                // Validate returns true if the form is valid, or false otherwise.
-                                // if (_formkey.currentState.validate()) {
-                                //   // If the form is valid, display a snackbar. In the real world,
-                                //   // you'd often call a server or save the information in a database.
-                                //   ScaffoldMessenger.of(context).showSnackBar(
-                                //     const SnackBar(
-                                //       content: Text('Processing Data'),
-                                //     ),
-                                //   );
-                                // }
+                              onPressed: () async {
+                                _validate();
+
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  },
+                                );
+
+                                try {
+                                  await FirebaseAuth.instance
+                                      .signInWithEmailAndPassword(
+                                    email: "${idController.text}@timtom.com",
+                                    password: passwordController.text,
+                                  );
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                } on FirebaseAuthException catch (e) {
+                                  Navigator.pop(context);
+                                  if (e.code == 'invalid-credential') {
+                                    wrongID();
+                                  }
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                 alignment: Alignment.center,

@@ -35,9 +35,11 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           quote,
                           textAlign: TextAlign.left,
-                          style: const TextStyle(
-                            color: Colors.white70,
-                            fontSize: 17,
+                          style: GoogleFonts.inter(
+                            textStyle: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),
@@ -48,9 +50,11 @@ class _HomePageState extends State<HomePage> {
                           child: Text(
                             '- $author',
                             textAlign: TextAlign.right,
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: 17,
+                            style: GoogleFonts.crimsonPro(
+                              textStyle: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: 17,
+                              ),
                             ),
                           ),
                         ),
@@ -86,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5.0),
                           child: Image.asset(
-                            "assets/carousel/events/1.jpeg",
+                            "assets/carousel/highlights/$i.jpeg",
                             fit: BoxFit.fill,
                             height: 270,
                           ));
@@ -123,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5.0),
                           child: Image.asset(
-                            "assets/carousel/events/1.jpeg",
+                            "assets/carousel/events/$i.jpeg",
                             fit: BoxFit.fill,
                             height: 270,
                           ));
@@ -263,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-              const Padding(padding: EdgeInsets.only(bottom: 20)),
+              const SizedBox(height: 20),
             ],
           ),
         ),

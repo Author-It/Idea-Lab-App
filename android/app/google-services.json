@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "353884137689",
+    "project_id": "lnct-idea-lab",
+    "storage_bucket": "lnct-idea-lab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353884137689:android:84a8089f035b05e6c0f6c8",
+        "android_client_info": {
+          "package_name": "com.lnct.bhopal.ac.in.idealab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQBtllRWfATP5uRWbx3aygBbsxQdKcaSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:idealab/pages/home_Page.dart';
-import 'package:idealab/pages/profile_page.dart';
 import 'package:idealab/pages/root_page.dart';
 import 'package:idealab/utils/functions.dart';
 
